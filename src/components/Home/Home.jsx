@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -29,35 +30,48 @@ function Home() {
           {/* Buttons */}
           <div className="flex gap-4">
 
-            <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+            <Link 
+              to="/contact"
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 hover:scale-105 transition duration-300"
+            >
               Contact Me
-            </button>
+            </Link>
 
-            <button className="border border-gray-400 px-6 py-3 rounded-lg hover:bg-gray-200 transition">
+            <Link 
+              to="/projects"
+              className="border border-gray-400 px-6 py-3 rounded-lg hover:bg-gray-200 hover:scale-105 transition duration-300"
+            >
               View Projects
-            </button>
+            </Link>
 
           </div>
 
           {/* Social Icons */}
           <div className="flex gap-6 text-2xl pt-4">
 
-            <a href="https://github.com/yourusername" target="_blank">
-              <FaGithub className="hover:text-blue-600 transition" />
+            <a 
+              href="https://github.com/yourusername" 
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaGithub className="hover:text-blue-600 hover:scale-110 transition" />
             </a>
 
-            <a href="https://linkedin.com/in/yourusername" target="_blank">
-              <FaLinkedin className="hover:text-blue-600 transition" />
+            <a 
+              href="https://linkedin.com/in/yourusername" 
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedin className="hover:text-blue-600 hover:scale-110 transition" />
             </a>
 
             <a href="mailto:yourmail@gmail.com">
-              <FaEnvelope className="hover:text-blue-600 transition" />
+              <FaEnvelope className="hover:text-blue-600 hover:scale-110 transition" />
             </a>
 
           </div>
 
         </div>
-
 
         {/* Right Section */}
         <div className="flex justify-center animate-slideRight">
