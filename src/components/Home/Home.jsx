@@ -1,73 +1,77 @@
-import { useState } from "react";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 function Home() {
-  const [isEditing, setIsEditing] = useState(false);
-
-  const [profile, setProfile] = useState({
-    name: "Faiyaz",
-    title: "Frontend Developer",
-    bio: "I build modern web applications using React."
-  });
-
-  const handleChange = (e) => {
-    setProfile({
-      ...profile,
-      [e.target.name]: e.target.value
-    });
-  };
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
 
-        {isEditing ? (
-          <>
-            <input
-              type="text"
-              name="name"
-              value={profile.name}
-              onChange={handleChange}
-              className="w-full mb-4 p-2 border rounded"
-            />
+      <div className="max-w-6xl w-full grid md:grid-cols-2 gap-10 items-center">
 
-            <input
-              type="text"
-              name="title"
-              value={profile.title}
-              onChange={handleChange}
-              className="w-full mb-4 p-2 border rounded"
-            />
+        {/* Left Section */}
+        <div className="space-y-6 animate-slideLeft">
 
-            <textarea
-              name="bio"
-              value={profile.bio}
-              onChange={handleChange}
-              className="w-full mb-4 p-2 border rounded"
-            />
+          <h2 className="text-blue-600 font-semibold text-lg">
+            Hello, I'm
+          </h2>
 
-            <button
-              onClick={() => setIsEditing(false)}
-              className="bg-green-500 text-white px-4 py-2 rounded"
-            >
-              Save
+          <h1 className="text-5xl font-bold text-gray-800">
+            Faiyaz
+          </h1>
+
+          <h3 className="text-2xl text-gray-600">
+            Odoo Developer & Frontend Developer
+          </h3>
+
+          <p className="text-gray-500">
+            I build modern web applications using React, Odoo, and Python.
+            Passionate about creating efficient and scalable business solutions.
+          </p>
+
+          {/* Buttons */}
+          <div className="flex gap-4">
+
+            <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+              Contact Me
             </button>
-          </>
-        ) : (
-          <>
-            <h1 className="text-2xl font-bold mb-2">{profile.name}</h1>
-            <h2 className="text-lg text-gray-600 mb-2">{profile.title}</h2>
-            <p className="mb-4">{profile.bio}</p>
 
-            <button
-              onClick={() => setIsEditing(true)}
-              className="bg-yellow-400 px-4 py-2 rounded"
-            >
-              Edit
+            <button className="border border-gray-400 px-6 py-3 rounded-lg hover:bg-gray-200 transition">
+              View Projects
             </button>
-          </>
-        )}
+
+          </div>
+
+          {/* Social Icons */}
+          <div className="flex gap-6 text-2xl pt-4">
+
+            <a href="https://github.com/yourusername" target="_blank">
+              <FaGithub className="hover:text-blue-600 transition" />
+            </a>
+
+            <a href="https://linkedin.com/in/yourusername" target="_blank">
+              <FaLinkedin className="hover:text-blue-600 transition" />
+            </a>
+
+            <a href="mailto:yourmail@gmail.com">
+              <FaEnvelope className="hover:text-blue-600 transition" />
+            </a>
+
+          </div>
+
+        </div>
+
+
+        {/* Right Section */}
+        <div className="flex justify-center animate-slideRight">
+
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            alt="profile"
+            className="w-80 hover:scale-105 transition duration-500"
+          />
+
+        </div>
 
       </div>
+
     </div>
   );
 }
