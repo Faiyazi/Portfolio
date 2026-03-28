@@ -1,35 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [title, setTitle] = useState("Faiyaz Ibji");
-
-  useEffect(() => {
-    fetch("http://localhost:5000/api/portfolio/navbar")
-      .then(res => res.json())
-      .then(data => {
-        if (data?.content?.title) {
-          setTitle(data.content.title);
-        }
-      });
-  }, []);
-
-  const editTitle = async () => {
-    const newName = prompt("Enter new Navbar name");
-    if (!newName) return;
-
-    setTitle(newName);
-
-    await fetch("http://localhost:5000/api/portfolio/navbar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ title: newName })
-    });
-  };
 
   return (
     <nav className="backdrop-blur-md bg-gray-900/80 text-white shadow-md sticky top-0 z-50 transition-all duration-500">
@@ -37,23 +11,15 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
         {/* Logo */}
-        <div className="flex items-center gap-3">
-          <div className="text-2xl font-bold text-blue-400 hover:scale-105 transition duration-300 cursor-pointer">
-            {title}
-          </div>
-
-          <button
-            onClick={editTitle}
-            className="bg-blue-500 px-3 py-1 rounded text-sm hover:bg-blue-600 hover:scale-105 transition"
-          >
-            Edit
-          </button>
+        <div className="text-2xl font-bold text-blue-400 hover:scale-105 transition duration-300 cursor-pointer">
+          Faiyaz Ibji
         </div>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-10 text-lg font-medium">
           <NavItem to="/">Home</NavItem>
           <NavItem to="/about">About</NavItem>
+          <NavItem to="/projects">Projects</NavItem>
           <NavItem to="/contact">Contact</NavItem>
         </div>
 
@@ -75,6 +41,7 @@ function Navbar() {
         <div className="flex flex-col items-center gap-6 text-lg">
           <NavItem to="/" onClick={() => setMenuOpen(false)}>Home</NavItem>
           <NavItem to="/about" onClick={() => setMenuOpen(false)}>About</NavItem>
+          <NavItem to="/projects" onClick={() => setMenuOpen(false)}>Projects</NavItem>
           <NavItem to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavItem>
         </div>
       </div>
@@ -96,7 +63,6 @@ function NavItem({ to, children, onClick }) {
     >
       {children}
 
-      {/* Animated Underline */}
       <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
     </NavLink>
   );
