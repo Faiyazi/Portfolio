@@ -1,8 +1,50 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Contact = () => {
-  const [phone, setPhone] = useState("");
+
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: ""
+  });
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.send(
+      "service_dmbkcxc",
+      "template_zegbums",
+      {
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        message: form.message,
+      },
+      "Yf-XOSYybCPQ-ETTN"
+    )
+    .then(() => {
+      alert("Message sent successfully ✅");
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        message: ""
+      });
+    })
+    .catch(() => {
+      alert("Failed to send message ❌");
+    });
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 animate-fadeIn">
@@ -28,8 +70,7 @@ const Contact = () => {
               Get in Touch
             </h2>
 
-            {/* Location */}
-            <div className="flex items-center gap-3 hover:translate-x-2 transition duration-300">
+            <div className="flex items-center gap-3">
               <FaMapMarkerAlt className="text-blue-500 text-xl" />
               <div>
                 <p className="text-gray-600">Location</p>
@@ -37,11 +78,7 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Email */}
-            <a 
-              href="mailto:yourmail@gmail.com"
-              className="flex items-center gap-3 hover:translate-x-2 transition duration-300"
-            >
+            <a href="mailto:ibjifaiyazz@gmail.com" className="flex items-center gap-3">
               <FaEnvelope className="text-blue-500 text-xl" />
               <div>
                 <p className="text-gray-600">Email</p>
@@ -49,11 +86,7 @@ const Contact = () => {
               </div>
             </a>
 
-            {/* Phone */}
-            <a 
-              href="tel:+919876543210"
-              className="flex items-center gap-3 hover:translate-x-2 transition duration-300"
-            >
+            <a href="tel:+919537653896" className="flex items-center gap-3">
               <FaPhone className="text-blue-500 text-xl" />
               <div>
                 <p className="text-gray-600">Phone</p>
@@ -61,59 +94,64 @@ const Contact = () => {
               </div>
             </a>
 
-            {/* Social */}
             <div className="flex gap-6 mt-4">
-
-              <a 
-                href="https://github.com/Faiyazi" 
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaGithub className="text-2xl cursor-pointer hover:text-blue-500 transition hover:scale-110" />
+              <a href="https://github.com/Faiyazi" target="_blank" rel="noreferrer">
+                <FaGithub className="text-2xl hover:text-blue-500 transition hover:scale-110" />
               </a>
 
-              <a 
-                href="https://www.linkedin.com/in/faiyaz-ibji" 
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaLinkedin className="text-2xl cursor-pointer hover:text-blue-500 transition hover:scale-110" />
+              <a href="https://www.linkedin.com/in/faiyaz-ibji" target="_blank" rel="noreferrer">
+                <FaLinkedin className="text-2xl hover:text-blue-500 transition hover:scale-110" />
               </a>
-
             </div>
 
           </div>
 
           {/* Contact Form */}
-          <form className="space-y-4 animate-slideRight">
+          <form onSubmit={sendEmail} className="space-y-4 animate-slideRight">
 
             <input
               type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
               placeholder="Your Name"
-              className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              required
+              className="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500"
             />
 
             <input
               type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
               placeholder="Your Email"
-              className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              required
+              className="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500"
             />
 
             <input
               type="text"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              name="phone"
+              value={form.phone}
+              onChange={handleChange}
               placeholder="Your Phone"
-              className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              className="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500"
             />
 
             <textarea
               rows="4"
+              name="message"
+              value={form.message}
+              onChange={handleChange}
               placeholder="Your Message"
-              className="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              required
+              className="w-full border rounded-lg p-3 focus:ring-2 focus:ring-blue-500"
             />
 
-            <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 hover:scale-105 transition duration-300">
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 hover:scale-105 transition"
+            >
               Send Message
             </button>
 
