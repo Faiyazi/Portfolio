@@ -65,7 +65,7 @@ const Contact = () => {
             <div className="flex gap-6 mt-4">
 
               <a 
-                href="https://github.com/yourusername" 
+                href="https://github.com/Faiyazi" 
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -73,7 +73,7 @@ const Contact = () => {
               </a>
 
               <a 
-                href="https://linkedin.com/in/yourusername" 
+                href="https://www.linkedin.com/in/faiyaz-ibji" 
                 target="_blank"
                 rel="noopener noreferrer"
               >

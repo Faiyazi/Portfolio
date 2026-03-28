@@ -50,7 +50,7 @@ function Home() {
           <div className="flex gap-6 text-2xl pt-4">
 
             <a 
-              href="https://github.com/yourusername" 
+              href="https://github.com/Faiyazi" 
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -58,7 +58,7 @@ function Home() {
             </a>
 
             <a 
-              href="https://linkedin.com/in/yourusername" 
+              href="https://www.linkedin.com/in/faiyaz-ibji" 
               target="_blank"
               rel="noopener noreferrer"
             >
