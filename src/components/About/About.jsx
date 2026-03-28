@@ -1,9 +1,10 @@
 import { FaUser, FaCode, FaBriefcase } from "react-icons/fa";
+import profileImg from "../image/image.png"
 
 const About = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-white px-4">
-      
+
       <div className="max-w-5xl w-full py-12">
 
         {/* Heading */}
@@ -21,9 +22,9 @@ const About = () => {
           {/* Left Side Image */}
           <div className="animate-slideLeft">
             <img
-              src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+              src={profileImg}
               alt="profile"
-              className="w-80 mx-auto hover:scale-105 transition duration-500"
+              className="w-80 rounded-full hover:scale-105 transition duration-500"
             />
           </div>
 
@@ -35,7 +36,7 @@ const About = () => {
               <div>
                 <h2 className="text-xl font-semibold">Who I Am</h2>
                 <p className="text-gray-600">
-                  I'm Faiyaz, an Odoo Developer and Frontend Developer passionate 
+                  I'm Faiyaz, an Odoo Developer and Frontend Developer passionate
                   about building efficient business solutions and modern web apps.
                 </p>
               </div>
@@ -56,7 +57,7 @@ const About = () => {
               <div>
                 <h2 className="text-xl font-semibold">Experience</h2>
                 <p className="text-gray-600">
-                  Working on Odoo customization, POS development, and full-stack 
+                  Working on Odoo customization, POS development, and full-stack
                   web applications.
                 </p>
               </div>
@@ -64,9 +65,11 @@ const About = () => {
 
             {/* Button */}
             <div>
-              <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 hover:scale-105 transition duration-300">
-                Download Resume
-              </button>
+              <a href="/Faiyaz_ibji.pdf" download>
+                <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 hover:scale-105 transition duration-300">
+                  Download Resume
+                </button>
+              </a>
             </div>
 
           </div>
