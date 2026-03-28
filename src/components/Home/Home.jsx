@@ -65,7 +65,7 @@ function Home() {
               <FaLinkedin className="hover:text-blue-600 hover:scale-110 transition" />
             </a>
 
-            <a href="mailto:yourmail@gmail.com">
+            <a href="mailto:ibjifaiyazz@gmail.com">
               <FaEnvelope className="hover:text-blue-600 hover:scale-110 transition" />
             </a>
 
