@@ -1,33 +1,80 @@
-/* Navbar.css */
-
-.navbar {
-  background-color: #111827; /* dark */
-  color: white;
-  padding: 15px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.navbar-container {
+  position: relative;
+  overflow: hidden;
 }
 
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 1px;
+/* Crack Lines */
+
+.navbar-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(120deg, transparent 48%, white 50%, transparent 52%),
+    linear-gradient(60deg, transparent 48%, white 50%, transparent 52%),
+    linear-gradient(30deg, transparent 48%, white 50%, transparent 52%);
+  opacity: 0;
 }
 
-.nav-links {
-  display: flex;
-  gap: 25px;
+.break-active::before {
+  animation: crack 1s ease forwards;
 }
 
-.nav-links a {
-  text-decoration: none;
-  color: white;
-  font-weight: 500;
-  transition: 0.3s ease;
+/* Crack animation */
+
+@keyframes crack {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
-.nav-links a:hover {
-  color: #facc15; /* yellow hover */
+/* Fall Down Animation */
+
+.break-active {
+  animation: fallDown 1s ease forwards;
+}
+
+/* Fall Down */
+
+@keyframes fallDown {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  30% {
+    transform: translateY(10px) rotate(-2deg);
+  }
+
+  60% {
+    transform: translateY(40px) rotate(2deg);
+  }
+
+  100% {
+    transform: translateY(150px) rotate(5deg);
+    opacity: 0;
+  }
+}
+
+/* Rejoin Animation */
+
+.navbar-container:not(.break-active) {
+  animation: rejoin 0.6s ease;
+}
+
+@keyframes rejoin {
+  0% {
+    transform: translateY(-150px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

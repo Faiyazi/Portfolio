@@ -32,24 +32,24 @@ const Contact = () => {
       },
       "Yf-XOSYybCPQ-ETTN"
     )
-    .then(() => {
-      alert("Message sent successfully ✅");
-      setForm({
-        name: "",
-        email: "",
-        phone: "",
-        message: ""
+      .then(() => {
+        alert("Message sent successfully ✅");
+        setForm({
+          name: "",
+          email: "",
+          phone: "",
+          message: ""
+        });
+      })
+      .catch(() => {
+        alert("Failed to send message ❌");
       });
-    })
-    .catch(() => {
-      alert("Failed to send message ❌");
-    });
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 animate-fadeIn">
-      
-      <div className="max-w-4xl w-full bg-white shadow-xl rounded-2xl p-8 transition duration-500 hover:shadow-2xl">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 animate-fadeIn overflow-x-hidden">
+
+      <div className="max-w-4xl w-full bg-white shadow-xl rounded-2xl p-8 overflow-hidden transition duration-500 hover:shadow-2xl">
 
         {/* Heading */}
         <div className="text-center mb-8 animate-slideUp">
@@ -64,7 +64,7 @@ const Contact = () => {
         <div className="grid md:grid-cols-2 gap-8">
 
           {/* Contact Info */}
-          <div className="space-y-6 text-left animate-slideLeft">
+          <div className="space-y-6 text-left animate-slideLeft overflow-hidden">
 
             <h2 className="text-2xl font-semibold mb-4">
               Get in Touch
@@ -107,7 +107,10 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <form onSubmit={sendEmail} className="space-y-4 animate-slideRight">
+          <form
+            onSubmit={sendEmail}
+            className="space-y-4 animate-slideRight overflow-hidden"
+          >
 
             <input
               type="text"
