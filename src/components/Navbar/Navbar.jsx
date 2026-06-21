@@ -1,46 +1,13 @@
 import { NavLink } from "react-router-dom";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "./Navbar.css";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [breakNav, setBreakNav] = useState(false);
-  const clickCount = useRef(0);
-  const clickTimer = useRef(null);
-
-  const handleBreak = () => {
-    clickCount.current += 1;
-
-    // Reset timer on every click
-    if (clickTimer.current) {
-      clearTimeout(clickTimer.current);
-    }
-
-    // If clicked fast 5 times
-    if (clickCount.current >= 5) {
-      setBreakNav(true);
-
-      setTimeout(() => {
-        setBreakNav(false);
-      }, 3000);
-
-      clickCount.current = 0;
-    }
-
-    // Reset counter if user stops clicking
-    clickTimer.current = setTimeout(() => {
-      clickCount.current = 0;
-    }, 700); // fast click window
-  };
 
   return (
-    <nav
-      onClick={handleBreak}
-      className={`navbar-container backdrop-blur-md bg-gray-900/80 text-white shadow-md sticky top-0 z-50 ${
-        breakNav ? "break-active" : ""
-      }`}
-    >
+    <nav className="navbar-container backdrop-blur-md bg-gray-900/80 text-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
         {/* Logo */}
@@ -56,14 +23,23 @@ function Navbar() {
           <NavItem to="/contact">Contact</NavItem>
         </div>
 
-        {/* Mobile Button */}
+        {/* Mobile Menu Button */}
         <div className="md:hidden text-2xl cursor-pointer">
           <button onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
-
       </div>
+
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="md:hidden flex flex-col items-center gap-4 pb-4 text-lg font-medium bg-gray-900/95">
+          <NavItem to="/">Home</NavItem>
+          <NavItem to="/about">About</NavItem>
+          <NavItem to="/projects">Projects</NavItem>
+          <NavItem to="/contact">Contact</NavItem>
+        </div>
+      )}
     </nav>
   );
 }

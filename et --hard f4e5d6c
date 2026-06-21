@@ -1,0 +1,14 @@
+[33m3e4643e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{0}: reset: moving to HEAD~1
+[33ma5f91ef[m HEAD@{1}: reset: moving to HEAD~1
+[33mb0dd1a4[m[33m ([m[1;31morigin/main[m[33m)[m HEAD@{2}: commit: Update contact page animations and loader
+[33ma5f91ef[m HEAD@{3}: commit: [Update animation]
+[33m3e4643e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{4}: commit: [ADD project]
+[33mbe8d479[m HEAD@{5}: commit: [ADD pdf and image]
+[33me5c2e03[m HEAD@{6}: commit: [Updated routes and mail]
+[33m3a531f5[m HEAD@{7}: commit: [Updated links]
+[33mf98820d[m HEAD@{8}: commit: [Updated links]
+[33me252dd2[m HEAD@{9}: commit: [Updated contact]
+[33m9a59e77[m HEAD@{10}: commit: [Updated views]
+[33m9539853[m HEAD@{11}: commit: [ADD]portolio
+[33m7148f32[m HEAD@{12}: Branch: renamed refs/heads/main to refs/heads/main
+[33m7148f32[m HEAD@{14}: commit (initial): first commit
