@@ -1,16 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import "./Navbar.css";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="navbar-container backdrop-blur-md bg-gray-900/80 text-white shadow-md sticky top-0 z-50">
+    <nav className="relative bg-gray-900 text-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
-        {/* Logo */}
+        
         <div className="text-2xl font-bold text-blue-400">
           Faiyaz Ibji
         </div>
@@ -23,17 +21,18 @@ function Navbar() {
           <NavItem to="/contact">Contact</NavItem>
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="md:hidden text-2xl cursor-pointer">
-          <button onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <FaTimes /> : <FaBars />}
-          </button>
-        </div>
+        {/* Mobile Button */}
+        <button
+          className="md:hidden text-2xl"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </button>
       </div>
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden flex flex-col items-center gap-4 pb-4 text-lg font-medium bg-gray-900/95">
+        <div className="md:hidden bg-gray-800 flex flex-col items-center gap-4 py-4">
           <NavItem to="/">Home</NavItem>
           <NavItem to="/about">About</NavItem>
           <NavItem to="/projects">Projects</NavItem>
@@ -49,13 +48,12 @@ function NavItem({ to, children }) {
     <NavLink
       to={to}
       className={({ isActive }) =>
-        `relative group transition duration-300 ${
-          isActive ? "text-blue-400" : "hover:text-blue-400"
-        }`
+        isActive
+          ? "text-blue-400 font-semibold"
+          : "hover:text-blue-400 transition"
       }
     >
       {children}
-      <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-400 transition-all duration-300 group-hover:w-full"></span>
     </NavLink>
   );
 }

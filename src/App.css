@@ -27,3 +27,9 @@
 .animate-slideRight {
   animation: slideRight 1s ease forwards;
 }
+
+nav,
+button,
+a {
+    user-select: none;
+}
